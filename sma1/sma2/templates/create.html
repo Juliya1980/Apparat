@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Создать автора {% endblock %}
+
+{% block content %}
+    <form id="create" action="#" method="post">
+        {% csrf_token %}
+        <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name">
+        </div>
+        <div>
+              <label for="sur_name">Sur_name</label>
+              <input type="text" id="sur_name" name="sur_name">
+        </div>
+        <div>
+              <label for="year">Year</label>
+              <input type="text" id="year" name="year">
+        </div>
+    </form>
+
+    <button type="submit" form="create">Create</button>
+
+{% endblock %}

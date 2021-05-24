@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Создать автора [FORM] {% endblock %}
+
+{% block content %}
+
+  <form id="create" action="#" method="post">
+        {% csrf_token %}
+        {{ author_form.as_p}}
+    </form>
+    <p>
+    </p>
+    <button type="submit" form="create">Create</button>
+{% endblock %}
