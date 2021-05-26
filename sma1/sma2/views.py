@@ -3,11 +3,13 @@ from .models import Datchiki, SystemChanges
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views import View
+from .func_for_datchik import vvod_info_datchiki
 
 # Create your views here.
 
 class IndexView(View):
     def get(self, request):
+        vvod_info_datchiki()
         return render(request, 'index.html')  # путь из templates
 
 
