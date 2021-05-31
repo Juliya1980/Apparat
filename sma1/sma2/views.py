@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Datchiki, SystemChanges
+from .models import Sensor, SystemChanges
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views import View

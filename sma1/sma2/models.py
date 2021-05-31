@@ -7,7 +7,7 @@ class Zone(models.Model):
     name = models.TextField(null=True)  # Имя зоны
 
 
-class Datchiki(models.Model):
+class Sensor(models.Model):
     id = models.AutoField(primary_key=True)  # ИД датчика
     name = models.TextField(null=True)  # Наименование датчика
     zone_id = models.ForeignKey(Zone, on_delete=models.SET_NULL, null=True)  # Зона нахождения
@@ -25,7 +25,7 @@ class Rezim(models.Model):
     id = models.AutoField(primary_key=True)  # ИД режима
     name = models.TextField(null=True)  # Наименование режима
     len_rezim = models.FloatField(null=True)  # Длительность режима
-    datchik_id = models.ForeignKey(Datchiki, on_delete=models.SET_NULL, null=True)  # ИД датчика
+    datchik_id = models.ForeignKey(Sensor, on_delete=models.SET_NULL, null=True)  # ИД датчика
     normativ_datchik = models.FloatField(null=True)  # Нормативное значение датчика
     pribor_id = models.ForeignKey(Pribori, on_delete=models.SET_NULL, null=True)  # ИД прибора
     normativ_pribor = models.FloatField(null=True)  # Нормативное значение прибора
@@ -44,7 +44,7 @@ class Product(models.Model):
 class SystemChanges(models.Model):
     id = models.AutoField(primary_key=True)  # ИД операции мониторинга системы
     time_oper = models.DateTimeField(null=True)  # Время совершения операции
-    datchik_id = models.ForeignKey(Datchiki, on_delete=models.SET_NULL, null=True)  # ИД датчика
+    datchik_id = models.ForeignKey(Sensor, on_delete=models.SET_NULL, null=True)  # ИД датчика
     quantity_datchik = models.FloatField(null=True)  # Показания датчика
     pribor_id = models.ForeignKey(Pribori, on_delete=models.SET_NULL, null=True)  # ИД прибора
     quantity_pribor = models.FloatField(null=True)  # Показания прибора

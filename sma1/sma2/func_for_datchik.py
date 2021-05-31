@@ -1,6 +1,6 @@
 import json
 from django.http import HttpResponse
-from .models import Datchiki, SystemChanges
+from .models import Sensor, SystemChanges
 from datetime import datetime
 import logging
 
@@ -24,12 +24,12 @@ def vvod_info_datchiki(data=data):
             for i in data:
                 sys_chang = SystemChanges()
                 sys_chang.time_oper = datetime.today()
-                if not Datchiki.objects.filter(name=i).exists():
-                    new_dat = Datchiki()
+                if not Sensor.objects.filter(name=i).exists():
+                    new_dat = Sensor()
                     new_dat.name = i
                     new_dat.save()
                     logging.info("Добавлен новый датчик %s", i)
-                sys_chang.datchik_id = Datchiki.objects.filter(name=i).get()
+                sys_chang.datchik_id = Sensor.objects.filter(name=i).get()
                 sys_chang.quantity_datchik = data[i]
                 sys_chang.save()
                 logging.info("Введены данные по датчику %s - %s градусов", i, data[i])
